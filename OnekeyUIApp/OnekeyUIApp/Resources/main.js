@@ -1047,6 +1047,7 @@ module.exports = (function (e) {
   },
   function (e, t, n) {
     "use strict";
+<<<<<<< HEAD
     var r =
         (this && this.__createBinding) ||
         (Object.create
@@ -1070,6 +1071,15 @@ module.exports = (function (e) {
     Object.defineProperty(t, "__esModule", { value: !0 }), i(n(118), t);
   },
   function (e, t, n) {
+=======
+    Object.defineProperty(t, "__esModule", {
+            value: !0
+        }),
+        function (e) {
+            for (var n in e) t.hasOwnProperty(n) || (t[n] = e[n])
+        }(n(118))
+}, function (e, t, n) {
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
     "use strict";
     const r = n(5).fromCallback,
       i = n(91);
@@ -2870,6 +2880,7 @@ module.exports = (function (e) {
       isStashedChangesVisible: g = !1,
       askForConfirmationWhenStashingAllChanges: y = !0,
     }) {
+<<<<<<< HEAD
       p = (function (e, t) {
         if (e.length <= t) return e;
         const n = [...e];
@@ -3231,6 +3242,297 @@ module.exports = (function (e) {
         Object(i.a)(b),
         r.Menu.buildFromTemplate(b)
       );
+=======
+        p = function (e, t) {
+            if (e.length <= t) return e;
+            const n = [...e];
+            if (n.length <= t) return e;
+            const r = n.reduce((e, t) => (t >= "︀" && t <= "️" ? e.length && e.push(`${e.pop()}${t}`) : e.push(t), e), []);
+            return r.length <= t ? e : r.slice(0, t).join("") + "…"
+        }(p, 25);
+        const v = l ? "&删除…" : "&删除",
+            w = h ? "显示拉取请求" : "创建拉取请求",
+            b = null === t ? "用CMD打开" : "用" + t+"打开",
+            _ = null === e ? "用external editor打开" : "用" + e+"打开",
+            E = new Array,
+            S = {
+                type: "separator"
+            };
+        const x = {
+            label: "文件(&F)",
+            submenu: [{
+                label: "新建 存储库…",
+                id: "new-repository",
+                click: f("create-repository"),
+                accelerator: "CmdOrCtrl+N"
+            }, S, {
+                label: "添加 本地存储库…",
+                id: "add-local-repository",
+                accelerator: "CmdOrCtrl+O",
+                click: f("add-local-repository")
+            }, {
+                label: "克隆 存储库…",
+                id: "clone-repository",
+                accelerator: "CmdOrCtrl+Shift+O",
+                click: f("clone-repository")
+            }]
+        };
+        x.submenu.push(S, {
+            label: "&选项…",
+            id: "preferences",
+            accelerator: "CmdOrCtrl+,",
+            click: f("show-preferences")
+        }, S, {
+            role: "quit",
+            label: "退出",
+            accelerator: "Alt+F4"
+        });
+        E.push(x), E.push({
+            label: "编辑(&E)",
+            submenu: [{
+                role: "undo",
+                label: "&撤消"
+            }, {
+                role: "redo",
+                label: "&恢复"
+            }, S, {
+                role: "cut",
+                label: "剪切"
+            }, {
+                role: "copy",
+                label: "&复制"
+            }, {
+                role: "paste",
+                label: "&粘贴"
+            }, {
+                label: "全选",
+                accelerator: "CmdOrCtrl+A",
+                click: f("select-all")
+            }, S, {
+                id: "find",
+                label: "&查找",
+                accelerator: "CmdOrCtrl+F",
+                click: f("find-text")
+            }]
+        }), E.push({
+            label: "视图(&V)",
+            submenu: [{
+                label: "&更改",
+                id: "show-changes",
+                accelerator: "CmdOrCtrl+1",
+                click: f("show-changes")
+            }, {
+                label: "&历史",
+                id: "show-history",
+                accelerator: "CmdOrCtrl+2",
+                click: f("show-history")
+            }, {
+                label: "存储库列表",
+                id: "show-repository-list",
+                accelerator: "CmdOrCtrl+T",
+                click: f("choose-repository")
+            }, {
+                label: "分支列表",
+                id: "show-branches-list",
+                accelerator: "CmdOrCtrl+B",
+                click: f("show-branches")
+            }, S, {
+                label: "转到摘要",
+                id: "go-to-commit-message",
+                accelerator: "CmdOrCtrl+G",
+                click: f("go-to-commit-message")
+            }, {
+                label: u(g),
+                id: "toggle-stashed-changes",
+                accelerator: "Ctrl+H",
+                click: f(g ? "hide-stashed-changes" : "show-stashed-changes")
+            }, {
+                label: "全屏切换",
+                role: "togglefullscreen"
+            }, S, {
+                label: "重置缩放",
+                accelerator: "CmdOrCtrl+0",
+                click: d(c.Reset)
+            }, {
+                label: "放大",
+                accelerator: "CmdOrCtrl+=",
+                click: d(c.In)
+            }, {
+                label: "缩小",
+                accelerator: "CmdOrCtrl+-",
+                click: d(c.Out)
+            }, S, {
+                label: "&重载",
+                id: "reload-window",
+                accelerator: "CmdOrCtrl+Alt+R",
+                click(e, t) {
+                    t && t.reload()
+                },
+                visible: !1
+            }, {
+                id: "show-devtools",
+                label: "&开发工具",
+                accelerator: "Ctrl+Shift+I",
+                click(e, t) {
+                    t && t.webContents.toggleDevTools()
+                }
+            }]
+        });
+        const C = function (e, t) {
+                if (!e) return "推送";
+                if (t) return "强制推送…";
+                return "强制推送"
+            }(m, n),
+            O = m ? "force-push" : "push";
+        E.push({
+            label: "存储库(&R)",
+            id: "repository",
+            submenu: [{
+                id: "push",
+                label: C,
+                accelerator: "CmdOrCtrl+P",
+                click: f(O)
+            }, {
+                id: "pull",
+                label: "拉取",
+                accelerator: "CmdOrCtrl+Shift+P",
+                click: f("pull")
+            }, {
+                label: v,
+                id: "remove-repository",
+                accelerator: "CmdOrCtrl+Backspace",
+                click: f("remove-repository")
+            }, S, {
+                id: "view-repository-on-github",
+                label: "在Github上查看",
+                accelerator: "CmdOrCtrl+Shift+G",
+                click: f("view-repository-on-github")
+            }, {
+                label: b,
+                id: "open-in-shell",
+                accelerator: "Ctrl+`",
+                click: f("open-in-shell")
+            }, {
+                label: "资源管理器",
+                id: "open-working-directory",
+                accelerator: "CmdOrCtrl+Shift+F",
+                click: f("open-working-directory")
+            }, {
+                label: _,
+                id: "open-external-editor",
+                accelerator: "CmdOrCtrl+Shift+A",
+                click: f("open-external-editor")
+            }, S, {
+                id: "create-issue-in-repository-on-github",
+                label: "在 GitHub 上新建问题",
+                accelerator: "CmdOrCtrl+I",
+                click: f("create-issue-in-repository-on-github"),
+                visible: !0
+            }, S, {
+                label: "存储库设置…",
+                id: "show-repository-settings",
+                click: f("show-repository-settings")
+            }]
+        }), E.push({
+            label: "分支(&B)",
+            id: "branch",
+            submenu: [{
+                label: "新建分支…",
+                id: "create-branch",
+                accelerator: "CmdOrCtrl+Shift+N",
+                click: f("create-branch")
+            }, {
+                label: "&重命名…",
+                id: "rename-branch",
+                accelerator: "CmdOrCtrl+Shift+R",
+                click: f("rename-branch")
+            }, {
+                label: "&删除…",
+                id: "delete-branch",
+                accelerator: "CmdOrCtrl+Shift+D",
+                click: f("delete-branch")
+            }, S, {
+                label: "放弃所有更改…",
+                id: "discard-all-changes",
+                accelerator: "CmdOrCtrl+Shift+Backspace",
+                click: f("discard-all-changes")
+            }, {
+                label: y ? "保存所有更改…" : "保存所有更改",
+                id: "stash-all-changes",
+                accelerator: "CmdOrCtrl+Shift+S",
+                click: f("stash-all-changes")
+            }, S, {
+                label: "&更新自 " + p,
+                id: "update-branch",
+                accelerator: "CmdOrCtrl+Shift+U",
+                click: f("update-branch")
+            }, {
+                label: "&与分支比较",
+                id: "compare-to-branch",
+                accelerator: "CmdOrCtrl+Shift+B",
+                click: f("compare-to-branch")
+            }, {
+                label: "&合并到当前分支…",
+                id: "merge-branch",
+                accelerator: "CmdOrCtrl+Shift+M",
+                click: f("merge-branch")
+            }, {
+                label: "恢复当前分支…",
+                id: "rebase-branch",
+                accelerator: "CmdOrCtrl+Shift+E",
+                click: f("rebase-branch")
+            }, S, {
+                label: "前往GitHub比较",
+                id: "compare-on-github",
+                accelerator: "CmdOrCtrl+Shift+C",
+                click: f("compare-on-github")
+            }, {
+                label: w,
+                id: "create-pull-request",
+                accelerator: "CmdOrCtrl+R",
+                click: f("open-pull-request")
+            }]
+        });
+        const k = [{
+            label: "反馈问题…",
+            click() {
+                r.shell.openExternal("https://github.com/desktop/desktop/issues/new/choose").catch(e => log.error("Failed opening issue creation page", e))
+            }
+        }, {
+            label: "联系Github支持…",
+            click() {
+                r.shell.openExternal("https://github.com/contact?from_desktop_app=1&app_version=" + r.app.getVersion()).catch(e => log.error("Failed opening contact support page", e))
+            }
+        }, {
+            label: "用户指南",
+            click() {
+                r.shell.openExternal("https://help.github.com/desktop/guides/").catch(e => log.error("Failed opening user guides page", e))
+            }
+        }, {
+            label: "键盘快捷键",
+            click() {
+                r.shell.openExternal("https://help.github.com/en/desktop/getting-started-with-github-desktop/keyboard-shortcuts-in-github-desktop").catch(e => log.error("Failed opening keyboard shortcuts page", e))
+            }
+        }, {
+            label: "打开日志文件夹",
+            click() {
+                const e = Object(o.a)();
+                Object(s.ensureDir)(e).then(() => {
+                    Object(a.a)(e)
+                }).catch(e => {
+                    log.error("Failed opening logs directory", e)
+                })
+            }
+        }];
+        return E.push({
+            label: "帮助(&H)",
+            submenu: [...k, S, {
+                label: "关于 Github 桌面",
+                click: f("show-about"),
+                id: "about"
+            }]
+        }), Object(i.a)(E), r.Menu.buildFromTemplate(E)
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
     }
     function u(e) {
       return e ? "&隐藏暂存的更改" : "&显示暂存的更改";
@@ -8758,8 +9060,14 @@ module.exports = (function (e) {
   },
   function (e, t, n) {
     "use strict";
+<<<<<<< HEAD
     Object.defineProperty(t, "__esModule", { value: !0 }),
       (t.enumerateKeysSafe = t.enumerateKeys = t.enumerateValuesSafe = t.enumerateValues = t.HKEY = t.RegistryValueType = void 0);
+=======
+    Object.defineProperty(t, "__esModule", {
+        value: !0
+    });
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
     const r = n(119);
     var i;
     function o(e) {
@@ -8987,6 +9295,7 @@ module.exports = (function (e) {
       },
     };
     var x = n(0),
+<<<<<<< HEAD
       C = n(18),
       O = n(24),
       k = n(52),
@@ -9015,6 +9324,19 @@ module.exports = (function (e) {
             })(e)
           );
         });
+=======
+        C = n(18),
+        O = n(24),
+        k = n(52),
+        L = n.n(k);
+
+    function T(e) {
+        e.on("enter-full-screen", () => R(e, "full-screen")), e.on("leave-full-screen", () => R(e, "normal")), e.on("maximize", () => R(e, "maximized")), e.on("minimize", () => R(e, "minimized")), e.on("unmaximize", () => R(e, "normal")), e.on("restore", () => R(e, "normal")), e.on("hide", () => R(e, "hidden")), e.on("show", () => {
+            R(e, function (e) {
+                return e.isFullScreen() ? "full-screen" : e.isMaximized() ? "maximized" : e.isMinimized() ? "minimized" : e.isVisible() ? "normal" : "hidden"
+            }(e))
+        })
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
     }
     function R(e, t) {
       e.webContents.send("window-state-changed", t);
@@ -9122,6 +9444,7 @@ module.exports = (function (e) {
     var F = n(53),
       P = n.n(F);
     class D {
+<<<<<<< HEAD
       constructor() {
         (this.emitter = new O.Emitter()),
           (this._loadTime = null),
@@ -9239,6 +9562,144 @@ module.exports = (function (e) {
         if (e) {
           const t = N(e);
           this.window.webContents.send("app-menu", { menu: t });
+=======
+        constructor() {
+            this.emitter = new O.Emitter, this._loadTime = null, this._rendererReadyTime = null, this.minWidth = 960, this.minHeight = 660;
+            const e = P()({
+                    defaultWidth: this.minWidth,
+                    defaultHeight: this.minHeight
+                }),
+                t = {
+                    x: e.x,
+                    y: e.y,
+                    width: e.width,
+                    height: e.height,
+                    minWidth: this.minWidth,
+                    minHeight: this.minHeight,
+                    show: !1,
+                    backgroundColor: "#fff",
+                    webPreferences: {
+                        disableBlinkFeatures: "Auxclick",
+                        nodeIntegration: !0,
+                        enableRemoteModule: !0,
+                        spellcheck: !1
+                    },
+                    acceptFirstMouse: !0,
+                    frame: !1
+                };
+            this.window = new x.BrowserWindow(t), e.manage(this.window);
+            let n = !1;
+            x.app.on("before-quit", () => {
+                n = !0
+            }), x.ipcMain.on("will-quit", e => {
+                n = !0, e.returnValue = !0
+            }), this.window.once("ready-to-show", () => {
+                this.window.on("unmaximize", () => {
+                    setTimeout(() => {
+                        const e = this.window.getBounds();
+                        e.width += 1, this.window.setBounds(e), e.width -= 1, this.window.setBounds(e)
+                    }, 5)
+                })
+            })
+        }
+        load() {
+            let e = 0;
+            this.window.webContents.once("did-start-loading", () => {
+                this._rendererReadyTime = null, this._loadTime = null, e = j()
+            }), this.window.webContents.once("did-finish-load", () => {
+                this._loadTime = j() - e, this.maybeEmitDidLoad()
+            }), this.window.webContents.on("did-finish-load", () => {
+                this.window.webContents.setVisualZoomLevelLimits(1, 1)
+            }), this.window.webContents.on("did-fail-load", () => {
+                this.window.webContents.openDevTools(), this.window.show()
+            }), x.ipcMain.once("renderer-ready", (e, t) => {
+                this._rendererReadyTime = t, this.maybeEmitDidLoad()
+            }), this.window.on("focus", () => this.window.webContents.send("focus")), this.window.on("blur", () => this.window.webContents.send("blur")), T(this.window), this.window.loadURL(function (...e) {
+                const t = r.resolve(...e);
+                return L()(t)
+            }(__dirname, "index.html"))
+        }
+        maybeEmitDidLoad() {
+            this.rendererLoaded && this.emitter.emit("did-load", null)
+        }
+        get rendererLoaded() {
+            return !!this.loadTime && !!this.rendererReadyTime
+        }
+        onClose(e) {
+            this.window.on("closed", e)
+        }
+        onDidLoad(e) {
+            return this.emitter.on("did-load", e)
+        }
+        isMinimized() {
+            return this.window.isMinimized()
+        }
+        isVisible() {
+            return this.window.isVisible()
+        }
+        restore() {
+            this.window.restore()
+        }
+        focus() {
+            this.window.focus()
+        }
+        show() {
+            this.window.show()
+        }
+        sendMenuEvent(e) {
+            this.show(), this.window.webContents.send("menu-event", {
+                name: e
+            })
+        }
+        sendURLAction(e) {
+            this.show(), this.window.webContents.send("url-action", {
+                action: e
+            })
+        }
+        sendLaunchTimingStats(e) {
+            this.window.webContents.send("launch-timing-stats", {
+                stats: e
+            })
+        }
+        sendAppMenu() {
+            const e = x.Menu.getApplicationMenu();
+            if (e) {
+                const t = N(e);
+                this.window.webContents.send("app-menu", {
+                    menu: t
+                })
+            }
+        }
+        sendCertificateError(e, t, n) {
+            this.window.webContents.send("certificate-error", {
+                certificate: e,
+                error: t,
+                url: n
+            })
+        }
+        showCertificateTrustDialog(e, t) {
+            x.dialog.showCertificateTrustDialog(this.window, {
+                certificate: e,
+                message: t
+            }, () => {})
+        }
+        sendException(e) {
+            const t = {
+                stack: e.stack,
+                message: e.message,
+                name: e.name
+            };
+            this.window.webContents.send("main-process-exception", t)
+        }
+        get loadTime() {
+            return this._loadTime
+        }
+        get rendererReadyTime() {
+            return this._rendererReadyTime
+        }
+        destroy() {
+            this.window.destroy()
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
         }
       }
       sendCertificateError(e, t, n) {
@@ -9413,6 +9874,7 @@ module.exports = (function (e) {
     }
     var re = n(19);
     async function ie(e, t, n) {
+<<<<<<< HEAD
       const r = new Map();
       if (
         (r.set("name", e.name),
@@ -9535,6 +9997,97 @@ module.exports = (function (e) {
       destroy() {
         this.window.destroy();
       }
+=======
+        const r = new Map;
+        if (r.set("name", e.name), r.set("message", e.message), e.stack && r.set("stack", e.stack), r.set("platform", "win32"), r.set("sha", "ebf4606179c52ba2c755126f6a100e8240969b94"), r.set("version", x.app.getVersion()), t)
+            for (const e of Object.keys(t)) r.set(e, t[e]);
+        const i = {
+                method: "POST",
+                url: n ? "https://central.github.com/api/desktop-non-fatal/exception" : "https://central.github.com/api/desktop/exception",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                }
+            },
+            o = [...r.entries()].map(([e, t]) => `${encodeURIComponent(e)}=${encodeURIComponent(t)}`).join("&");
+        try {
+            await new Promise((e, t) => {
+                const n = x.net.request(i);
+                n.on("response", n => {
+                    200 === n.statusCode ? e() : t(`Got ${n.statusCode} - ${n.statusMessage} from central`)
+                }), n.on("error", t), n.end(o)
+            }), log.info("Error report submitted")
+        } catch (t) {
+            log.error("Failed submitting error report", e)
+        }
+    }
+    class oe {
+        constructor(e, t) {
+            this.emitter = new O.Emitter, this.hasFinishedLoading = !1, this.hasSentReadyEvent = !1;
+            const n = {
+                width: 600,
+                height: 500,
+                minWidth: 600,
+                minHeight: 500,
+                show: !1,
+                backgroundColor: "#fff",
+                webPreferences: {
+                    disableBlinkFeatures: "Auxclick",
+                    nodeIntegration: !0,
+                    spellcheck: !1
+                },
+                frame: !1
+            };
+            this.window = new x.BrowserWindow(n), this.error = t, this.errorType = e
+        }
+        load() {
+            log.debug("Starting crash process"), this.window.webContents.once("did-start-loading", () => {
+                log.debug("Crash process in startup")
+            }), this.window.webContents.once("did-finish-load", () => {
+                log.debug("Crash process started"), this.hasFinishedLoading = !0, this.maybeEmitDidLoad()
+            }), this.window.webContents.on("did-finish-load", () => {
+                this.window.webContents.setVisualZoomLevelLimits(1, 1)
+            }), this.window.webContents.on("did-fail-load", () => {
+                log.error("Crash process failed to load"), this.emitter.emit("did-fail-load", null)
+            }), x.ipcMain.on("crash-ready", e => {
+                log.debug("Crash process is ready"), this.hasSentReadyEvent = !0, this.sendError(), this.maybeEmitDidLoad()
+            }), x.ipcMain.on("crash-quit", e => {
+                log.debug("Got quit signal from crash process"), this.window.close()
+            }), T(this.window), this.window.loadURL(`file://${__dirname}/crash.html`)
+        }
+        maybeEmitDidLoad() {
+            this.hasFinishedLoading && this.hasSentReadyEvent && this.emitter.emit("did-load", null)
+        }
+        onClose(e) {
+            this.window.on("closed", e)
+        }
+        onFailedToLoad(e) {
+            this.emitter.on("did-fail-load", e)
+        }
+        onDidLoad(e) {
+            return this.emitter.on("did-load", e)
+        }
+        focus() {
+            this.window.focus()
+        }
+        show() {
+            log.debug("Showing crash process window"), this.window.show()
+        }
+        sendError() {
+            const e = {
+                    stack: this.error.stack,
+                    message: this.error.message,
+                    name: this.error.name
+                },
+                t = {
+                    type: this.errorType,
+                    error: e
+                };
+            this.window.webContents.send("error", t)
+        }
+        destroy() {
+            this.window.destroy()
+        }
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
     }
     let se = !1;
     function ae(e, t) {
@@ -9567,7 +10120,14 @@ module.exports = (function (e) {
         return i;
       })(e, t);
     }
+
+    function ue(e, t) {
+        process.emit("send-non-fatal-exception", t, {
+            kind: e
+        })
+    }
     n(54);
+<<<<<<< HEAD
     x.app.setAppLogsPath(),
       (x.app.allowRendererProcessReuse = !1),
       (function () {
@@ -9626,6 +10186,57 @@ module.exports = (function (e) {
         ie((e = b(e)), ge()), me(e);
       });
     let ve = !1;
+=======
+    x.app.setAppLogsPath(), x.app.allowRendererProcessReuse = !1,
+        function () {
+            d.a.install({
+                environment: "node",
+                handleUncaughtExceptions: !1,
+                retrieveSourceMap: g
+            });
+            const e = Error;
+            v = e.prepareStackTrace, e.prepareStackTrace = w
+        }();
+    let fe = null;
+    const he = j();
+    let pe = !1,
+        de = null,
+        me = [];
+
+    function ge(e) {
+        pe = !0;
+        const t = null === fe;
+        fe && (fe.destroy(), fe = null),
+            function (e, t) {
+                if (log.error(E(t)), se) return;
+                se = !0, Object(I.setCrashMenu)();
+                const n = new oe(e ? "launch" : "generic", t);
+                n.onDidLoad(() => {
+                    n.show()
+                }), n.onFailedToLoad(async () => {
+                    await x.dialog.showMessageBox({
+                        type: "error",
+                        title: "无法恢复的错误",
+                        message: "GitHub Desktop遇到不可恢复的错误，需要重新启动。\n\n已将此问题报告给团队，但如果您反复遇到此问题，请将此问题报告给GitHub桌面问题跟踪程序。\n\n" + (t.stack || t.message)
+                    }), x.app.relaunch(), x.app.quit()
+                }), n.onClose(() => {
+                    x.app.relaunch(), x.app.quit()
+                }), n.load()
+            }(t, e)
+    }
+
+    function ye() {
+        return {
+            uptime: ((j() - he) / 1e3).toFixed(3),
+            time: (new Date).toString()
+        }
+    }
+    const ve = new Set(["x-github-client"]);
+    ve.add("x-github-desktop-auth"), ve.add("github-windows"), x.app.on("window-all-closed", () => {}), process.on("uncaughtException", e => {
+        ie(e = b(e), ye()), ge(e)
+    });
+    let we = !1;
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
     if (process.argv.length > 1) {
       const e = process.argv[1],
         t = (function (e) {
@@ -9660,6 +10271,7 @@ module.exports = (function (e) {
                     e
                   );
                 }
+<<<<<<< HEAD
               })();
             case "--squirrel-obsolete":
               return Promise.resolve();
@@ -9715,10 +10327,53 @@ module.exports = (function (e) {
     }
     function Ee(e) {
       de ? de.push(e) : ue && e(ue);
+=======
+                return null
+            }(e);
+        t ? (we = !0, t.catch(t => {
+            log.error("Failed handling Squirrel event: " + e, t)
+        }).then(() => {
+            x.app.quit()
+        })) : Ee(process.argv)
+    }
+
+    function be(e) {
+        log.info("Processing protocol url");
+        const t = G(e);
+        Se(e => {
+            e.focus(), e.sendURLAction(t)
+        })
+    }
+    let _e = !1;
+    if (!we) {
+        const e = x.app.requestSingleInstanceLock();
+        _e = !e, x.app.on("second-instance", (e, t, n) => {
+            fe && (fe.isMinimized() && fe.restore(), fe.isVisible() || fe.show(), fe.focus()), Ee(t)
+        }), _e && x.app.quit()
+    }
+
+    function Ee(e) {
+        log.info("Received possible protocol arguments: " + e.length); {
+            const t = e.filter(e => {
+                try {
+                    const t = C.parse(e);
+                    return t.protocol && ve.has(t.protocol.slice(0, -1))
+                } catch (t) {
+                    return log.error("Unable to parse argument as URL: " + e), !1
+                }
+            });
+            e.includes("--protocol-launcher") && 1 === t.length ? be(t[0]) : log.error("Malformed launch arguments received: " + e)
+        }
+    }
+
+    function Se(e) {
+        me ? me.push(e) : fe && e(fe)
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
     }
     process,
       x.app.on("will-finish-launching", () => {
         x.app.on("open-url", (e, t) => {
+<<<<<<< HEAD
           e.preventDefault(), we(t);
         });
       }),
@@ -9774,6 +10429,37 @@ module.exports = (function (e) {
                 x.Menu.setApplicationMenu(n),
                 void (null !== ue && ue.sendAppMenu())
               );
+=======
+            e.preventDefault(), be(t)
+        })
+    }), process.env.GITHUB_DESKTOP_DISABLE_HARDWARE_ACCELERATION && (log.info("GITHUB_DESKTOP_DISABLE_HARDWARE_ACCELERATION environment variable set, disabling hardware acceleration"), x.app.disableHardwareAcceleration()), x.app.on("ready", () => {
+        _e || we || (de = j() - he, ve.forEach(e => function (e) {
+            x.app.setAsDefaultProtocolClient(e, process.execPath, ["--protocol-launcher"])
+        }(e)), function () {
+            const e = new D;
+            0;
+            e.onClose(() => {
+                fe = null, pe || x.app.quit()
+            }), e.onDidLoad(() => {
+                e.show(), e.sendLaunchTimingStats({
+                    mainReadyTime: de,
+                    loadTime: e.loadTime,
+                    rendererReadyTime: e.rendererReadyTime
+                });
+                const t = me;
+                me = null;
+                for (const n of t) n(e)
+            }), e.load(), fe = e
+        }(), x.Menu.setApplicationMenu(Object(I.buildDefaultMenu)({
+            selectedShell: null,
+            selectedExternalEditor: null,
+            askForConfirmationOnRepositoryRemoval: !1,
+            askForConfirmationOnForcePush: !1
+        })), x.ipcMain.on("update-preferred-app-menu-item-labels", (e, t) => {
+            const n = Object(I.buildDefaultMenu)(t),
+                r = x.Menu.getApplicationMenu();
+            if (null === r) return x.Menu.setApplicationMenu(n), void(null !== fe && fe.sendAppMenu());
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
             let i = !1;
             for (const e of Object(I.getAllMenuItems)(n)) {
               const t = e.id;
@@ -9785,6 +10471,7 @@ module.exports = (function (e) {
                     ((e.enabled = n.enabled), (i = !0)))
                 : (i = !0);
             }
+<<<<<<< HEAD
             i && ue && (x.Menu.setApplicationMenu(n), ue.sendAppMenu());
           }),
           x.ipcMain.on("menu-event", (e, t) => {
@@ -9792,6 +10479,17 @@ module.exports = (function (e) {
             ue && ue.sendMenuEvent(n);
           }),
           x.ipcMain.on("execute-menu-item", (e, { id: t }) => {
+=======
+            i && fe && (x.Menu.setApplicationMenu(n), fe.sendAppMenu())
+        }), x.ipcMain.on("menu-event", (e, t) => {
+            const {
+                name: n
+            } = e;
+            fe && fe.sendMenuEvent(n)
+        }), x.ipcMain.on("execute-menu-item", (e, {
+            id: t
+        }) => {
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
             const n = x.Menu.getApplicationMenu();
             if (null === n) return;
             const r = n.getMenuItemById(t);
@@ -9805,6 +10503,7 @@ module.exports = (function (e) {
             let n = !1;
             const r = x.Menu.getApplicationMenu();
             if (null !== r) {
+<<<<<<< HEAD
               for (const e of t) {
                 const { id: t, state: i } = e,
                   o = r.getMenuItemById(t);
@@ -9850,6 +10549,46 @@ module.exports = (function (e) {
             }
           ),
           x.ipcMain.on("open-external", async (e, { path: t }) => {
+=======
+                for (const e of t) {
+                    const {
+                        id: t,
+                        state: i
+                    } = e, o = r.getMenuItemById(t);
+                    o ? void 0 !== i.enabled && o.enabled !== i.enabled && (o.enabled = i.enabled, n = !0) : M("Unknown menu id: " + t)
+                }
+                n && fe && (x.Menu.setApplicationMenu(r), fe.sendAppMenu())
+            } else log.debug("unable to get current menu, bailing out...")
+        }), x.ipcMain.handle("show-contextual-menu", (e, t) => new Promise(n => {
+            const r = le(t, e => n(e)),
+                i = x.BrowserWindow.fromWebContents(e.sender) || void 0;
+            r.popup({
+                window: i,
+                callback: () => n(null)
+            })
+        })), x.ipcMain.on("get-app-menu", () => {
+            fe && fe.sendAppMenu()
+        }), x.ipcMain.on("show-certificate-trust-dialog", (e, {
+            certificate: t,
+            message: n
+        }) => {
+            Se(e => {
+                e.showCertificateTrustDialog(t, n)
+            })
+        }), x.ipcMain.on("log", (e, t, n) => {
+            l(t, n)
+        }), x.ipcMain.on("uncaught-exception", (e, t) => {
+            ge(t)
+        }), x.ipcMain.on("send-error-report", (e, {
+            error: t,
+            extra: n,
+            nonFatal: r
+        }) => {
+            ie(t, Object.assign(Object.assign({}, ye()), n), r)
+        }), x.ipcMain.on("open-external", async (e, {
+            path: t
+        }) => {
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
             const n = t.toLowerCase();
             let r;
             (n.startsWith("http://") || n.startsWith("https://")) &&
@@ -9859,6 +10598,7 @@ module.exports = (function (e) {
             } catch (e) {
               log.error(`Call to openExternal failed: '${e}'`), (r = !1);
             }
+<<<<<<< HEAD
             e.sender.send("open-external-result", { result: r });
           }),
           x.ipcMain.on("show-item-in-folder", (e, { path: t }) => {
@@ -9906,3 +10646,41 @@ module.exports = (function (e) {
   },
 ]);
 //# sourceMappingURL=main.js.map
+=======
+            e.sender.send("open-external-result", {
+                result: r
+            })
+        }), x.ipcMain.on("show-item-in-folder", (e, {
+            path: t
+        }) => {
+            u.stat(t, e => {
+                e ? log.error(`Unable to find file at '${t}'`, e) : x.shell.showItemInFolder(t)
+            })
+        }), x.ipcMain.on("show-folder-contents", async (e, {
+            path: t
+        }) => {
+            const n = await Object(s.stat)(t).catch(e => (log.error("Unable to retrieve file information for " + t, e), null));
+            if (n) return n.isDirectory() ? void Object(re.a)(t) : (log.error(`Trying to get the folder contents of a non-folder at '${t}'`), void x.shell.showItemInFolder(t))
+        }))
+    }), x.app.on("activate", () => {
+        Se(e => {
+            e.show()
+        })
+    }), x.app.on("web-contents-created", (e, t) => {
+        t.on("new-window", (e, t) => {
+            e.preventDefault();
+            const n = "Prevented new window to: " + t;
+            log.warn(n), ue("newWindowPrevented", Error(n))
+        }), t.on("will-navigate", (e, t) => {
+            e.preventDefault();
+            const n = "Prevented navigation to: " + t;
+            log.warn(n), ue("willNavigatePrevented", Error(n))
+        })
+    }), x.app.on("certificate-error", (e, t, n, r, i, o) => {
+        o(!1), Se(e => {
+            e.sendCertificateError(i, r, n)
+        })
+    })
+}]);
+//# sourceMappingURL=main.js.map
+>>>>>>> parent of 35ca073 (2.6.1 menu汉化)
